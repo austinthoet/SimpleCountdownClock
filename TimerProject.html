@@ -1,0 +1,53 @@
+	<html lang="en">
+	<head>
+	</head>
+	<body>
+	<h1 id="theTimer" style="background-color: #ffffff">
+<script>
+	var inst = setInterval(change, 1);
+	function change() {
+		//sets current date and release date
+		var currentDate = new Date();
+		var releaseDate = new Date(2019, 8, 30);
+		var difference = releaseDate-currentDate;
+		
+		//sets total time in days	
+		var days = difference/1000/60/60/24;
+
+		//gets just days without other time components
+		remainder = days - Math.round(days);
+		days = Math.round(days);
+		if(remainder < 0){ //Math.round() follows 5 or above rule 
+			days -= 1; 	   //Get correct days
+			remainder += 1; //Fixes if above .5
+		}
+
+		var hours = remainder*24;
+		remainder = hours - Math.round(hours);
+		hours = Math.round(hours);
+		if(remainder < 0){ //Math.round() follows 5 or above rule 
+			hours -= 1; 	   //Get correct days
+			remainder += 1; //Fixes if above .5
+		}
+
+		var minutes = remainder*60;
+		remainder = minutes - Math.round(minutes);
+		minutes = Math.round(minutes);
+		if(remainder < 0){ //Math.round() follows 5 or above rule 
+			minutes -= 1; 	   //Get correct days
+			remainder += 1; //Fixes if above .5
+		}
+
+		var seconds = remainder*60;
+		remainder = seconds - Math.round(seconds);
+		seconds = Math.round(seconds);
+		if(remainder < 0){ //Math.round() follows 5 or above rule 
+			seconds -= 1; 	   //Get correct days
+		}
+
+		var elem = document.getElementById("theTimer");
+  		elem.innerHTML = '' + days + ' Days: '+ hours + ' Hours: ' + minutes + ' Minutes: ' + seconds + ' Seconds';
+    }
+</script> </h1>
+</body>
+</html>
